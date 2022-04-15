@@ -249,6 +249,41 @@ def nao_entre_em_panico():
         return jsonify({"42": "a resposta para a vida, o universo e tudo mais"})
     return jsonify({"message": "Não entre em pânico!"})
 
+@app.route('/made_body', methods=['POST'])
+
+def made_body():
+
+    from flask import request
+    
+    data = request.get_json()
+
+    list = data['list']
+    channel = data['channel']
+    text = data['text']
+
+    list = list.split('/')
+ 
+   
+
+    size = len(list)
+
+    if size <= 3:
+
+        body = made_quick_reply (list = list,channel = channel, text = text)
+
+    if size <= 10 and size >3 :
+
+        body = made_menu (list = list,channel = channel, text = text)
+
+    
+
+    if size > 10:
+
+        body = made_text(list = list,channel = channel, text = text)
+
+    return body
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
