@@ -1,17 +1,9 @@
 import json
-import uuid
-import email
-import imaplib
-import qrcode
 import os
-import re
 from flask import Flask
 from flask import jsonify
 from datetime import datetime
-from urllib import request, parse
-from urllib.error import URLError, HTTPError
-from datetime import datetime
-from email.message import EmailMessage
+
 
 def made_menu (list,channel, text):
 
