@@ -8,22 +8,22 @@ def made_menu (list,channel, text):
 
     if channel == 'whatsapp':   
 
-            body = ''
-            list_option = ''
+            body = {}
+            list_option = []
         
             header = "application/json"
 
             for position in list:
 
                 title = position
-                option = json.dumps( {
+                option = {
                                     "id": title,
                                     "title": title
-                                })
-                list_option = list_option +','+ option
+                                }
+                list_option.append(option)
 
             list_option = list_option[1:]
-            body = json.dumps( {"body":{
+            body =  {
             "recipient_type": "individual",
             "type": "interactive",
             "interactive": {
@@ -45,13 +45,15 @@ def made_menu (list,channel, text):
                     ]
                 }
             }
-        },"header" : header})
+        }
             
 
     elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
 
         count = 0
         header = "application/vnd.lime.select+json"
+        body = {}
+        list_option = []
         
 
         for position in list:
@@ -60,27 +62,30 @@ def made_menu (list,channel, text):
 
             count = count + 1
 
-            option = json.dumps({
+            option = {
                     "order": count,
                     "text": title
-                })
-            list_option = list_option +','+ option
+                }
+            list_option.append(option)
 
-        body = json.dumps({"body":{
+        body = {
             "text": text,
             "options": [
 
                 list_option
                 
             ]
-        },"header" : header})
-        
+        }
+       
 
     else:
 
         header = "text/plain"
 
         count = 0
+
+        body = ''
+        list_option = ''
 
         for position in list:
 
@@ -101,9 +106,7 @@ def made_menu (list,channel, text):
 
     })
 
-    if channel == "whatsapp" or channel == "blip":
-
-        body_blip = body_blip.replace('\\','')
+  
 
 
     return body_blip
@@ -112,8 +115,8 @@ def made_menu (list,channel, text):
 
 def made_quick_reply (list,channel, text):
 
-    body = ''
-    list_option = ''
+    body = {}
+    list_option = []
 
     if channel == 'whatsapp':   
         
@@ -123,18 +126,18 @@ def made_quick_reply (list,channel, text):
 
                 title = position
 
-                option = json.dumps({
+                option = {
                             "type": "reply",
                             "reply": {
                                 "id": title,
                                 "title": title
                             }
-                        })
-                list_option = list_option +','+ option
+                        }
+                #list_option = list_option + option
 
-                #list_option.append(option)
-            list_option = list_option[1:]
-            body = json.dumps({"body":{
+                list_option.append(option)
+            #list_option = list_option[1:]
+            body = {"body":{
             "recipient_type": "individual",
             "type": "interactive",
             "interactive": {
@@ -150,8 +153,9 @@ def made_quick_reply (list,channel, text):
                     ]
                 }
             }
-         },"header" : header})
-            body = body.replace('\\','')
+         },"header" : header}
+    
+            
 
     elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
 
@@ -165,24 +169,28 @@ def made_quick_reply (list,channel, text):
 
             count = count + 1
 
-            option = json.dumps({
+            option = {
                     "order": count,
                     "text": title
-                })
-            list_option = list_option +','+ option
+                }
+            list_option.append(option)
 
-        body = json.dumps({"body":{
+        body = {"body" :
+        {
         "scope":"immediate",
-        "text":"Choose an option",
+        "text":text,
         "options":[
             list_option
         ]
-    },"header" : header})
+    },
+    "header" : header}
         
 
     else:
-
+        print("else")
         header = "text/plain"
+        body = ''
+        list_option = ''
 
         count = 0
 
@@ -203,18 +211,9 @@ def made_quick_reply (list,channel, text):
         "header" : header
 
     })
+    print(body)
+    print('na função')
     
-    body_blip = json.dumps({
-
-        "body" : body,
-        "header" : header
-
-    })
-
-    if channel == "whatsapp" or channel == "blip":
-
-        body_blip = body_blip.replace('\\','')
-
     return body
 
 def made_text(list,channel, text):
@@ -238,14 +237,14 @@ def made_text(list,channel, text):
 
     body = text + "\n\n" + list_option
     
-    body = json.dumps({
+    body_blip = {
 
         "body" : body,
         "header" : header
 
-    })
+    }
 
-    return body
+    return body_blip
 
 app = Flask(__name__)
 
