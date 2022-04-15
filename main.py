@@ -23,7 +23,7 @@ def made_menu (list,channel, text):
                 list_option = list_option +','+ option
 
             list_option = list_option[1:]
-            body = json.dumps( {
+            body = json.dumps( {"body":{
             "recipient_type": "individual",
             "type": "interactive",
             "interactive": {
@@ -45,8 +45,8 @@ def made_menu (list,channel, text):
                     ]
                 }
             }
-        })
-            body = body.replace('\\','')
+        },"header" : header})
+            
 
     elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
 
@@ -66,15 +66,15 @@ def made_menu (list,channel, text):
                 })
             list_option = list_option +','+ option
 
-        body = json.dumps({
+        body = json.dumps({"body":{
             "text": text,
             "options": [
 
                 list_option
                 
             ]
-        })
-        body = body.replace('\\','')
+        },"header" : header})
+        
 
     else:
 
@@ -134,7 +134,7 @@ def made_quick_reply (list,channel, text):
 
                 #list_option.append(option)
             list_option = list_option[1:]
-            body = json.dumps({
+            body = json.dumps({"body":{
             "recipient_type": "individual",
             "type": "interactive",
             "interactive": {
@@ -150,7 +150,7 @@ def made_quick_reply (list,channel, text):
                     ]
                 }
             }
-         })
+         },"header" : header})
             body = body.replace('\\','')
 
     elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
@@ -171,14 +171,14 @@ def made_quick_reply (list,channel, text):
                 })
             list_option = list_option +','+ option
 
-        body = json.dumps({
+        body = json.dumps({"body":{
         "scope":"immediate",
         "text":"Choose an option",
         "options":[
             list_option
         ]
-    })
-        body = body.replace('\\','')
+    },"header" : header})
+        
 
     else:
 
@@ -197,6 +197,12 @@ def made_quick_reply (list,channel, text):
             list_option = list_option + '\n' + couter + " " + title
 
         body = text + "\n\n" + list_option
+        body = json.dumps({
+
+        "body" : body,
+        "header" : header
+
+    })
     
     body_blip = json.dumps({
 
@@ -209,7 +215,7 @@ def made_quick_reply (list,channel, text):
 
         body_blip = body_blip.replace('\\','')
 
-    return body_blip
+    return body
 
 def made_text(list,channel, text):
 
@@ -232,14 +238,14 @@ def made_text(list,channel, text):
 
     body = text + "\n\n" + list_option
     
-    body_blip = json.dumps({
+    body = json.dumps({
 
         "body" : body,
         "header" : header
 
     })
 
-    return body_blip
+    return body
 
 app = Flask(__name__)
 
