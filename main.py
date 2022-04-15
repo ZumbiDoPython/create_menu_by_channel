@@ -36,11 +36,11 @@ def made_menu (list,channel, text):
                     "sections": [
                         {
                             "title": "Menu",
-                            "rows": [
+                            "rows": 
 
                                 list_option
                                 
-                            ]
+                            
                         }
                     ]
                 }
@@ -70,11 +70,11 @@ def made_menu (list,channel, text):
 
         body = {
             "text": text,
-            "options": [
+            "options": 
 
                 list_option
                 
-            ]
+            
         }
        
 
@@ -146,11 +146,11 @@ def made_quick_reply (list,channel, text):
                     "text": text
                 },
                 "action": {
-                    "buttons": [
+                    "buttons": 
 
                         list_option
                       
-                    ]
+                    
                 }
             }
          },"header" : header}
@@ -179,9 +179,9 @@ def made_quick_reply (list,channel, text):
         {
         "scope":"immediate",
         "text":text,
-        "options":[
+        "options":
             list_option
-        ]
+        
     },
     "header" : header}
         
@@ -276,13 +276,13 @@ def made_body():
 
         body = made_quick_reply (list = list,channel = channel, text = text)
 
-    if size <= 10 and size >3 :
+    elif size <= 10 and size >3 :
 
         body = made_menu (list = list,channel = channel, text = text)
 
     
 
-    if size > 10:
+    else:
 
         body = made_text(list = list,channel = channel, text = text)
 
