@@ -22,7 +22,6 @@ def made_menu (list,channel, text):
                                 }
                 list_option.append(option)
 
-            list_option = list_option[1:]
             body =  {
             "recipient_type": "individual",
             "type": "interactive",
