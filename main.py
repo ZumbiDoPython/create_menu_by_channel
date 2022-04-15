@@ -1,6 +1,245 @@
 import os
 from flask import Flask, jsonify, request
+import json
 
+
+
+def made_menu (list,channel, text):
+
+    if channel == 'whatsapp':   
+
+            body = ''
+            list_option = ''
+        
+            header = "application/json"
+
+            for position in list:
+
+                title = position
+                option = json.dumps( {
+                                    "id": title,
+                                    "title": title
+                                })
+                list_option = list_option +','+ option
+
+            list_option = list_option[1:]
+            body = json.dumps( {
+            "recipient_type": "individual",
+            "type": "interactive",
+            "interactive": {
+                "type": "list",
+                "body": {
+                    "text": text
+                },
+                "action": {
+                    "button": "Menu",
+                    "sections": [
+                        {
+                            "title": "Menu",
+                            "rows": [
+
+                                list_option
+                                
+                            ]
+                        }
+                    ]
+                }
+            }
+        })
+            body = body.replace('\\','')
+
+    elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
+
+        count = 0
+        header = "application/vnd.lime.select+json"
+        
+
+        for position in list:
+
+            title = position
+
+            count = count + 1
+
+            option = json.dumps({
+                    "order": count,
+                    "text": title
+                })
+            list_option = list_option +','+ option
+
+        body = json.dumps({
+            "text": text,
+            "options": [
+
+                list_option
+                
+            ]
+        })
+        body = body.replace('\\','')
+
+    else:
+
+        header = "text/plain"
+
+        count = 0
+
+        for position in list:
+
+            title = position
+
+            count = count + 1
+
+            couter = str(count)
+
+            list_option = list_option + '\n' + couter + " " + title
+
+        body = text + "\n\n" + list_option
+    
+    body_blip = json.dumps({
+
+        "body" : body,
+        "header" : header
+
+    })
+
+    if channel == "whatsapp" or channel == "blip":
+
+        body_blip = body_blip.replace('\\','')
+
+
+    return body_blip
+
+
+
+def made_quick_reply (list,channel, text):
+
+    body = ''
+    list_option = ''
+
+    if channel == 'whatsapp':   
+        
+            header = "application/json"
+
+            for position in list:
+
+                title = position
+
+                option = json.dumps({
+                            "type": "reply",
+                            "reply": {
+                                "id": title,
+                                "title": title
+                            }
+                        })
+                list_option = list_option +','+ option
+
+                #list_option.append(option)
+            list_option = list_option[1:]
+            body = json.dumps({
+            "recipient_type": "individual",
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": text
+                },
+                "action": {
+                    "buttons": [
+
+                        list_option
+                      
+                    ]
+                }
+            }
+         })
+            body = body.replace('\\','')
+
+    elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
+
+        count = 0
+        header = "application/vnd.lime.select+json"
+        
+
+        for position in list:
+
+            title = position
+
+            count = count + 1
+
+            option = json.dumps({
+                    "order": count,
+                    "text": title
+                })
+            list_option = list_option +','+ option
+
+        body = json.dumps({
+        "scope":"immediate",
+        "text":"Choose an option",
+        "options":[
+            list_option
+        ]
+    })
+        body = body.replace('\\','')
+
+    else:
+
+        header = "text/plain"
+
+        count = 0
+
+        for position in list:
+
+            title = position
+
+            count = count + 1
+
+            couter = str(count)
+
+            list_option = list_option + '\n' + couter + " " + title
+
+        body = text + "\n\n" + list_option
+    
+    body_blip = json.dumps({
+
+        "body" : body,
+        "header" : header
+
+    })
+
+    if channel == "whatsapp" or channel == "blip":
+
+        body_blip = body_blip.replace('\\','')
+
+    return body_blip
+
+def made_text(list,channel, text):
+
+    body = ''
+    list_option = ''
+
+    header = "text/plain"
+
+    count = 0
+
+    for position in list:
+
+            title = position
+
+            count = count + 1
+
+            couter = str(count)
+
+            list_option = list_option + '\n' + couter + " " + title
+
+    body = text + "\n\n" + list_option
+    
+    body_blip = json.dumps({
+
+        "body" : body,
+        "header" : header
+
+    })
+
+    return body_blip
 
 app = Flask(__name__)
 
