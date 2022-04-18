@@ -47,7 +47,7 @@ def made_menu (list,channel, text):
         }
             
 
-    elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
+    elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
         count = 0
         header = "application/vnd.lime.select+json"
@@ -156,7 +156,7 @@ def made_quick_reply (list,channel, text):
     
             
 
-    elif channel == 'blip'or channel == 'instagram' or channel == 'messenger' :
+    elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
         count = 0
         header = "application/vnd.lime.select+json"
