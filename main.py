@@ -265,7 +265,7 @@ def made_body():
     channel = data['channel']
     text = data['text']
 
-    list = list.split('/')
+    #list = list.split('/')
     #list = ['Comercial' ,'Financeiro' ,'Suporte' ]
    
 
