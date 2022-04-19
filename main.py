@@ -11,6 +11,7 @@ def made_menu (list,channel, text):
     if channel == 'whatsapp': 
             
         body = whatsapp.made_menu(list = list, text = text)
+        header = "application/json"
 
     elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
