@@ -1,51 +1,16 @@
 import os
 from flask import Flask, jsonify, request
 import json
+import whatsapp
+import text
 
 
 
 def made_menu (list,channel, text):
 
-    if channel == 'whatsapp':   
-
-            body = {}
-            list_option = []
-        
-            header = "application/json"
-
-            for position in list:
-
-                title = position
-                option = {
-                                    "id": title,
-                                    "title": title
-                                }
-                list_option.append(option)
-
-            body =  {
-            "recipient_type": "individual",
-            "type": "interactive",
-            "interactive": {
-                "type": "list",
-                "body": {
-                    "text": text
-                },
-                "action": {
-                    "button": "Menu",
-                    "sections": [
-                        {
-                            "title": "Menu",
-                            "rows": 
-
-                                list_option
-                                
-                            
-                        }
-                    ]
-                }
-            }
-        }
+    if channel == 'whatsapp': 
             
+        whatsapp.made_menu(list = list, text = text)
 
     elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
@@ -253,9 +218,9 @@ def nao_entre_em_panico():
         return jsonify({"42": "a resposta para a vida, o universo e tudo mais"})
     return jsonify({"message": "Não entre em pânico!"})
 
-@app.route('/made_body', methods=['POST'])
+@app.route('/create_dinamic_menu', methods=['POST'])
 
-def made_body():
+def create_menu():
 
     from flask import request
     
