@@ -6,8 +6,6 @@ list_option = []
 
 def made_quick_reply (list, text):
 
-    header = "application/json"
-
     for position in list:
 
                 title = position
@@ -23,7 +21,7 @@ def made_quick_reply (list, text):
 
                 list_option.append(option)
             #list_option = list_option[1:]
-    body = {"body":{
+    body = {
             "recipient_type": "individual",
             "type": "interactive",
             "interactive": {
@@ -39,13 +37,11 @@ def made_quick_reply (list, text):
                     
                 }
             }
-         },"header" : header}
+         }
 
     return body
 
 def made_menu (list,text):
-        
-    header = "application/json"
 
     for position in list:
 
@@ -58,9 +54,7 @@ def made_menu (list,text):
 
     body ={  
         
-        "body" :
-
-        {
+        
             "recipient_type": "individual",
             "type": "interactive",
             "interactive": {
@@ -82,10 +76,6 @@ def made_menu (list,text):
                     ]
                 }
             }
-        },
-
-   "header" : header 
-
-    }
+        }
 
     return body
