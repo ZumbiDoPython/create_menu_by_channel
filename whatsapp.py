@@ -41,6 +41,8 @@ def made_quick_reply (list, text):
             }
          },"header" : header}
 
+    return body
+
 def made_menu (list,text):
         
     header = "application/json"
