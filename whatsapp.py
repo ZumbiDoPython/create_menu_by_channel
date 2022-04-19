@@ -54,7 +54,11 @@ def made_menu (list,text):
                                 }
                 list_option.append(option)
 
-    body =  {
+    body ={  
+        
+        "body" :
+
+        {
             "recipient_type": "individual",
             "type": "interactive",
             "interactive": {
@@ -76,4 +80,10 @@ def made_menu (list,text):
                     ]
                 }
             }
-        }
+        },
+
+   "header" : header 
+
+    }
+
+    return body
