@@ -10,7 +10,7 @@ def made_menu (list,channel, text):
 
     if channel == 'whatsapp': 
             
-        whatsapp.made_menu(list = list, text = text)
+        body = whatsapp.made_menu(list = list, text = text)
 
     elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
