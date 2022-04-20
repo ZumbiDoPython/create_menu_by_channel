@@ -3,13 +3,10 @@ import json
 
 body = ''
 list_option = ''
-count = 0
 
 def made_text(list,channel, text):
 
-  
-
-    header = "text/plain"
+    count = 0
 
     for position in list:
 

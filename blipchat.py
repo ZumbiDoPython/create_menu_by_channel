@@ -3,9 +3,11 @@ import json
 
 body = {}
 list_option = []
-count = 0
+
 
 def made_menu (list, text):
+
+    count = 0
 
     for position in list:
 
@@ -33,6 +35,8 @@ def made_menu (list, text):
 
 
 def made_quick_reply (list,channel, text):
+
+    count = 0
 
     for position in list:
 
