@@ -4,7 +4,7 @@ import json
 body = ''
 list_option = ''
 
-def made_text(list,channel, text):
+def made_text(list,text):
 
     count = 0
 
