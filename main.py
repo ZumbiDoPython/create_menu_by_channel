@@ -2,67 +2,28 @@ import os
 from flask import Flask, jsonify, request
 import json
 import whatsapp
-import text
+import blipchat
+import texts
 
 
 
 def made_menu (list,channel, text):
 
     if channel == 'whatsapp': 
-            
+
+        header = "application/json"           
         body = whatsapp.made_menu(list = list, text = text)
-        header = "application/json"
 
     elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
-        count = 0
         header = "application/vnd.lime.select+json"
-        body = {}
-        list_option = []
-        
-
-        for position in list:
-
-            title = position
-
-            count = count + 1
-
-            option = {
-                    "order": count,
-                    "text": title
-                }
-            list_option.append(option)
-
-        body = {
-            "text": text,
-            "options": 
-
-                list_option
-                
-            
-        }
-       
+        body = blipchat.made_menu(list = list, text = text)
 
     else:
 
         header = "text/plain"
+        body = texts.made_text(list = list, text = text)
 
-        count = 0
-
-        body = ''
-        list_option = ''
-
-        for position in list:
-
-            title = position
-
-            count = count + 1
-
-            couter = str(count)
-
-            list_option = list_option + '\n' + couter + " " + title
-
-        body = text + "\n\n" + list_option
     
     body_blip = json.dumps({
 
@@ -85,131 +46,41 @@ def made_quick_reply (list,channel, text):
 
     if channel == 'whatsapp':   
         
-            header = "application/json"
-
-            for position in list:
-
-                title = position
-
-                option = {
-                            "type": "reply",
-                            "reply": {
-                                "id": title,
-                                "title": title
-                            }
-                        }
-                #list_option = list_option + option
-
-                list_option.append(option)
-            #list_option = list_option[1:]
-            body = {"body":{
-            "recipient_type": "individual",
-            "type": "interactive",
-            "interactive": {
-                "type": "button",
-                "body": {
-                    "text": text
-                },
-                "action": {
-                    "buttons": 
-
-                        list_option
-                      
-                    
-                }
-            }
-         },"header" : header}
-    
-            
+        header = "application/json"
+        body = whatsapp.made_quick_reply(list = list, text = text)
 
     elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
-        count = 0
         header = "application/vnd.lime.select+json"
+        body = blipchat.made_quick_reply(list = list, text = text)
         
-
-        for position in list:
-
-            title = position
-
-            count = count + 1
-
-            option = {
-                    "order": count,
-                    "text": title
-                }
-            list_option.append(option)
-
-        body = {"body" :
-        {
-        "scope":"immediate",
-        "text":text,
-        "options":
-            list_option
-        
-    },
-    "header" : header}
-        
-
     else:
-        print("else")
+      
         header = "text/plain"
-        body = ''
-        list_option = ''
+        body = texts.made_text(list = list, text = text)
 
-        count = 0
-
-        for position in list:
-
-            title = position
-
-            count = count + 1
-
-            couter = str(count)
-
-            list_option = list_option + '\n' + couter + " " + title
-
-        body = text + "\n\n" + list_option
         body = json.dumps({
 
         "body" : body,
         "header" : header
 
     })
-    print(body)
-    print('na função')
+
     
     return body
 
-def made_text(list,channel, text):
-
-    body = ''
-    list_option = ''
+def made_text(list, text):
 
     header = "text/plain"
+    body = texts.made_text(list = list, text = text)
 
-    count = 0
-
-    for position in list:
-
-            title = position
-
-            count = count + 1
-
-            couter = str(count)
-
-            list_option = list_option + '\n' + couter + " " + title
-
-    body = text + "\n\n" + list_option
-    
-    body_blip = {
+    body = json.dumps({
 
         "body" : body,
         "header" : header
 
-    }
+    })
 
-    return body_blip
 
 app = Flask(__name__)
 
@@ -249,7 +120,7 @@ def create_menu():
 
     else:
 
-        body = made_text(list = list,channel = channel, text = text)
+        body = made_text(list = list, text = text)
 
     return body
 
