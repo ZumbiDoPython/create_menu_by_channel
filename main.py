@@ -111,19 +111,19 @@ def create_menu():
 
     if size <= 3:
 
-        body = made_quick_reply (list = list,channel = channel, text = text)
+        last_body = made_quick_reply (list = list,channel = channel, text = text)
 
     elif size <= 10 and size >3 :
 
-        body = made_menu (list = list,channel = channel, text = text)
+        last_body = made_menu (list = list,channel = channel, text = text)
 
     
 
     else:
 
-        body = made_text(list = list, text = text)
+        last_body = made_text(list = list, text = text)
 
-    return body
+    return last_body
 
 
 if __name__ == "__main__":
