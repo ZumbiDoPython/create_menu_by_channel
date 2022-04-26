@@ -6,6 +6,9 @@ list_option = []
 
 def made_quick_reply (list, text):
 
+    body = {}
+    list_option = []
+
     for position in list:
 
                 title = position
@@ -42,6 +45,9 @@ def made_quick_reply (list, text):
     return body
 
 def made_menu (list,text):
+
+    body = {}
+    list_option = []
 
     for position in list:
 
