@@ -7,6 +7,9 @@ list_option = []
 
 def made_menu (list, text):
 
+    body = {}
+    list_option = []
+
     count = 0
 
     for position in list:
@@ -35,6 +38,9 @@ def made_menu (list, text):
 
 
 def made_quick_reply (list,channel, text):
+
+    body = {}
+    list_option = []
 
     count = 0
 

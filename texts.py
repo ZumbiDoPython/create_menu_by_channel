@@ -6,6 +6,9 @@ list_option = ''
 
 def made_text(list,text):
 
+    body = ''
+    list_option = ''
+
     count = 0
 
     for position in list:
