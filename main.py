@@ -59,7 +59,7 @@ def made_quick_reply (list,channel, text):
         header = "text/plain"
         body = texts.made_text(list = list, text = text)
 
-        body = json.dumps({
+    body_blip = json.dumps({
 
         "body" : body,
         "header" : header
@@ -67,19 +67,20 @@ def made_quick_reply (list,channel, text):
     })
 
     
-    return body
+    return body_blip
 
 def made_text(list, text):
 
     header = "text/plain"
     body = texts.made_text(list = list, text = text)
 
-    body = json.dumps({
+    body_blip = json.dumps({
 
         "body" : body,
         "header" : header
 
     })
+    return body_blip
 
 
 app = Flask(__name__)
