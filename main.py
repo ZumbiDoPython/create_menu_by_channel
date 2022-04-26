@@ -8,6 +8,8 @@ import texts
 
 
 def made_menu (list,channel, text):
+   
+    body = {}
 
     if channel == 'whatsapp': 
 
@@ -70,6 +72,8 @@ def made_quick_reply (list,channel, text):
     return body_blip
 
 def made_text(list, text):
+
+    body = {}
 
     header = "text/plain"
     body = texts.made_text(list = list, text = text)
