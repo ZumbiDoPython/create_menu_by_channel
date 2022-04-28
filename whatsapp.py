@@ -8,15 +8,17 @@ def made_quick_reply (list, text):
 
     body = {}
     list_option = []
+    count = 0
 
     for position in list:
 
                 title = position
-
+                count = count + 1
+                counter = str(count)
                 option = {
                             "type": "reply",
                             "reply": {
-                                "id": title,
+                                "id": counter,
                                 "title": title
                             }
                         }
@@ -48,12 +50,16 @@ def made_menu (list,text):
 
     body = {}
     list_option = []
+    count = 0
+    
 
     for position in list:
 
+                count = count + 1
+                counter = str(count)
                 title = position
                 option = {
-                                    "id": title,
+                                    "id": counter,
                                     "title": title
                                 }
                 list_option.append(option)
@@ -95,10 +101,10 @@ def made_menu_with_descripiton (list, text, description):
     for position in list:
 
 
-                
+                counter = str(count)
                 title = position
                 option = {
-                                    "id": title,
+                                    "id": counter,
                                     "title": title,
                                     "decription" : description[count] 
                                 }
