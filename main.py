@@ -95,7 +95,33 @@ def nao_entre_em_panico():
         return jsonify({"42": "a resposta para a vida, o universo e tudo mais"})
     return jsonify({"message": "Não entre em pânico!"})
 
+@app.route('/create_menu_with_description', methods=['POST'])
+
+def create_menu_with_description():
+
+    from flask import request
+    
+    data = request.get_json()
+
+
+    list = data['list']
+    channel = data['channel']
+    text = data['text']
+    description_list = data['description_list']
+
+    body = whatsapp.made_menu_with_descripiton (list, text, decription = description_list )
+    print(channel)
+    return body
+
+
+
 @app.route('/create_dinamic_menu', methods=['POST'])
+
+#{
+#   "list":["Teste1","Teste2","Teste3","Teste4"],
+#   "channel":"whatsapp",
+#   "text":"Foi"
+#}
 
 def create_menu():
 

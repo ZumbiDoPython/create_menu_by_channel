@@ -85,3 +85,50 @@ def made_menu (list,text):
         }
 
     return body
+
+def made_menu_with_descripiton (list, text, decription):
+
+    body = {}
+    list_option = []
+    count = 0
+
+    for position in list:
+
+
+                
+                title = position
+                option = {
+                                    "id": title,
+                                    "title": title,
+                                    "decription" : decription[count] 
+                                }
+                list_option.append(option)
+                count = count + 1
+
+    body ={  
+        
+        
+            "recipient_type": "individual",
+            "type": "interactive",
+            "interactive": {
+                "type": "list",
+                "body": {
+                    "text": text
+                },
+                "action": {
+                    "button": "Menu",
+                    "sections": [
+                        {
+                            "title": "Menu",
+                            "rows": 
+
+                                list_option
+                                
+                            
+                        }
+                    ]
+                }
+            }
+        }
+
+    return body
