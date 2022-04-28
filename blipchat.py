@@ -37,7 +37,7 @@ def made_menu (list, text):
 
 
 
-def made_quick_reply (list,channel, text):
+def made_quick_reply (list, text):
 
     body = {}
     list_option = []
@@ -63,5 +63,35 @@ def made_quick_reply (list,channel, text):
             list_option
         
     }
+
+    return body
+
+def made_menu_with_descripiton(list, text, description):
+
+    body = {}
+    list_option = []
+
+    count = 0
+
+    for position in list:
+
+            title = position + "-" + description[count]
+
+            count = count + 1
+
+            option = {
+                    "order": count,
+                    "text": title
+                }
+            list_option.append(option)
+
+    body = {
+            "text": text,
+            "options": 
+
+                list_option
+                
+            
+        }
 
     return body
