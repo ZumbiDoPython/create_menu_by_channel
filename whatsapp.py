@@ -86,7 +86,7 @@ def made_menu (list,text):
 
     return body
 
-def made_menu_with_descripiton (list, text, decription):
+def made_menu_with_descripiton (list, text, description):
 
     body = {}
     list_option = []
@@ -100,7 +100,7 @@ def made_menu_with_descripiton (list, text, decription):
                 option = {
                                     "id": title,
                                     "title": title,
-                                    "decription" : decription[count] 
+                                    "decription" : description[count] 
                                 }
                 list_option.append(option)
                 count = count + 1

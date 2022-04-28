@@ -10,12 +10,12 @@ def made_menu_description (list,channel, text, description):
     if channel == 'whatsapp': 
 
         header = "application/json"
-        body = whatsapp.made_menu_with_descripiton (list = list, text = text, decription = description )
+        body = whatsapp.made_menu_with_descripiton (list = list, text = text, description = description )
 
     elif channel == 'blipchat': 
 
         header = "application/vnd.lime.select+json"
-        body = blipchat.made_menu_with_descripiton (list = list, text = text, decription = description )
+        body = blipchat.made_menu_with_descripiton (list = list, text = text, description = description )
     
     body_blip = json.dumps({
 
