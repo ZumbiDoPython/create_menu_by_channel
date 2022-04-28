@@ -75,7 +75,7 @@ def made_menu_with_descripiton(list, text, description):
 
     for position in list:
 
-            title = position + "-" + description[count]
+            title = position + " - " + description[count]
 
             count = count + 1
 
