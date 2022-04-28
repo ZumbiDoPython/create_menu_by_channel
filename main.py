@@ -111,7 +111,12 @@ def create_menu_with_description():
 
     body = whatsapp.made_menu_with_descripiton (list, text, decription = description_list )
     print(channel)
-    body = json.dump(body)
+    body= json.dumps({
+
+        "body" : body,
+        "header" : "header"
+
+    })
     return body
 
 
