@@ -106,7 +106,7 @@ def made_menu_with_descripiton (list, text, description):
                 option = {
                                     "id": counter,
                                     "title": title,
-                                    "decription" : description[count] 
+                                    "description" : description[count] 
                                 }
                 list_option.append(option)
                 count = count + 1
