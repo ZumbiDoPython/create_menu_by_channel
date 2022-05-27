@@ -27,7 +27,7 @@ def made_menu_description (list,channel, text, description, comment):
 
     return body_blip
 
-def made_menu (list,channel, text):
+def made_menu (list,channel, text, comment):
    
     body = {}
 
@@ -50,7 +50,8 @@ def made_menu (list,channel, text):
     body_blip = json.dumps({
 
         "body" : body,
-        "header" : header
+        "header" : header,
+        "comment" : comment
 
     })
 
@@ -61,7 +62,7 @@ def made_menu (list,channel, text):
 
 
 
-def made_quick_reply (list,channel, text):
+def made_quick_reply (list,channel, text, comment):
 
     body = {}
     list_option = []
@@ -84,14 +85,15 @@ def made_quick_reply (list,channel, text):
     body_blip = json.dumps({
 
         "body" : body,
-        "header" : header
+        "header" : header,
+        "comment" : comment
 
     })
 
     
     return body_blip
 
-def made_text(list, text):
+def made_text(list, text, comment):
 
     body = {}
 
@@ -101,7 +103,9 @@ def made_text(list, text):
     body_blip = json.dumps({
 
         "body" : body,
-        "header" : header
+        "header" : header,
+        "comment" : comment
+
 
     })
     return body_blip

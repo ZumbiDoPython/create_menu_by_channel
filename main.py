@@ -106,17 +106,19 @@ def create_menu():
 
     if size <= 3:
 
-        last_body = common.made_quick_reply (list = list,channel = channel, text = text)
+        last_body = common.made_quick_reply (list = list,channel = channel, text = text, comment = comment)
 
     elif size <= 10 and size >3 :
 
-        last_body = common.made_menu (list = list,channel = channel, text = text)
+        last_body = common.made_menu (list = list,channel = channel, text = text, comment = comment)
 
     
 
     else:
 
-        last_body = common.made_text(list = list, text = text)
+        comment = "Por padrão o WhatsApp tem como limite 3 opções para quick reply, e 10 para lista, sendo assim a API joga tudo que tiver mais que 10 opções para texto"
+
+        last_body = common.made_text(list = list, text = text, comment = comment)
 
     return last_body
 
