@@ -6,7 +6,7 @@ import blipchat
 import texts
 import common
 
-
+comment = "Por aqui está tudo bem"
 
 app = Flask(__name__)
 
@@ -48,6 +48,7 @@ def create_menu_with_description():
             if channel == "whatsapp":
 
                 channel = "text"
+                comment = "Você ultrapassou o limite de caracteres aceitos pelo WhatsApp, no titulo do botão ele aceita apenas 20 caracteres, sendo assim passamos seu menu para formato de texto"
 
     for position in description_list:
 
@@ -58,8 +59,9 @@ def create_menu_with_description():
             if channel == "whatsapp":
 
                 channel = "text"
+                comment = "Você ultrapassou o limite de caracteres aceitos pelo WhatsApp, no sub titulo do botão ele aceita apenas 72 caracteres, sendo assim passamos seu menu para formato de texto"
 
-    body = common.made_menu_description(list,channel, text, description_list)
+    body = common.made_menu_description(list,channel, text, description_list, comment = comment)
     
     return body
 

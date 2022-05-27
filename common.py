@@ -5,7 +5,7 @@ import whatsapp
 import blipchat
 import texts
 
-def made_menu_description (list,channel, text, description):
+def made_menu_description (list,channel, text, description, comment):
 
     if channel == 'whatsapp': 
 
@@ -20,7 +20,8 @@ def made_menu_description (list,channel, text, description):
     body_blip = json.dumps({
 
         "body" : body,
-        "header" : header
+        "header" : header,
+        "comment": comment
 
     })
 
