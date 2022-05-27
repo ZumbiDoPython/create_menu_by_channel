@@ -27,6 +27,8 @@ def nao_entre_em_panico():
 
 def create_menu_with_description():
 
+    comment = "Por aqui está tudo bem"
+
     from flask import request
     
     data = request.get_json()
@@ -76,6 +78,8 @@ def create_menu_with_description():
 #}
 
 def create_menu():
+
+    comment = "Por aqui está tudo bem"
 
     from flask import request
     
