@@ -37,6 +37,28 @@ def create_menu_with_description():
     text = data['text']
     description_list = data['description_list']
 
+    channel = channel.lower()
+
+    for position in list:
+
+        size_menu = len(position)
+
+        if size_menu > 20:
+
+            if channel == "whatsapp":
+
+                channel = "text"
+
+    for position in description_list:
+
+        size_menu = len(position)
+
+        if size_menu > 72:
+
+            if channel == "whatsapp":
+
+                channel = "text"
+
     body = common.made_menu_description(list,channel, text, description_list)
     
     return body
@@ -63,9 +85,22 @@ def create_menu():
 
     #list = list.split('/')
     #list = ['Comercial' ,'Financeiro' ,'Suporte' ]
-   
+    
+    channel = channel.lower()
 
     size = len(list)
+
+    for position in list:
+
+        size_menu = len(position)
+
+        if size_menu > 20:
+
+            if channel == "whatsapp":
+
+                channel = "text"
+
+
 
     if size <= 3:
 
