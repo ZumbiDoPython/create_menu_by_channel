@@ -90,8 +90,14 @@ def create_menu():
     list = data['list']
     channel = data['channel']
     text = data['text']
-    order = data['order']
+    try:
 
+        order = data['order']
+
+    except:
+
+        order = True
+        
     #list = list.split('/')
     #list = ['Comercial' ,'Financeiro' ,'Suporte' ]
     
