@@ -60,6 +60,7 @@ def made_quick_reply (list, text, order):
             option ['text'] =  title
                 
             list_option.append(option)
+            print(option)
 
     body = {
         "scope":"immediate",
