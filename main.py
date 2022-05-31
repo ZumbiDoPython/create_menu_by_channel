@@ -1,8 +1,6 @@
 import os
 from flask import Flask, jsonify, request
 import json
-
-from sqlalchemy import true
 import whatsapp
 import blipchat
 import texts
