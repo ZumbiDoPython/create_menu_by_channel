@@ -50,8 +50,14 @@ def made_quick_reply (list, text, order):
 
             count = count + 1
 
+            if order == True:
+
+                option['order'] = count
+
+            
+
             option = {
-                    "order": count,
+                
                     "text": title
                 }
             list_option.append(option)
