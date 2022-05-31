@@ -90,10 +90,15 @@ def create_menu():
     list = data['list']
     channel = data['channel']
     text = data['text']
+    order = data['order']
 
     #list = list.split('/')
     #list = ['Comercial' ,'Financeiro' ,'Suporte' ]
     
+    if order == None:
+
+        order = True
+
     channel = channel.lower()
 
     size = len(list)
@@ -108,7 +113,7 @@ def create_menu():
 
                 channel = "text"
 
-    order = True
+    
 
     if size <= 3:
 
