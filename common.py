@@ -62,7 +62,7 @@ def made_menu (list,channel, text, comment):
 
 
 
-def made_quick_reply (list,channel, text, comment):
+def made_quick_reply (list,channel, text, comment, order):
 
     body = {}
     list_option = []
@@ -75,7 +75,7 @@ def made_quick_reply (list,channel, text, comment):
     elif channel == 'blipchat'or channel == 'instagram' or channel == 'messenger' :
 
         header = "application/vnd.lime.select+json"
-        body = blipchat.made_quick_reply(list = list, text = text)
+        body = blipchat.made_quick_reply(list = list, text = text, order = order)
         
     else:
       

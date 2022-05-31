@@ -1,6 +1,8 @@
 import os
 from flask import Flask, jsonify, request
 import json
+
+from sqlalchemy import true
 import whatsapp
 import blipchat
 import texts
@@ -81,6 +83,8 @@ def create_menu():
 
     comment = "Por aqui está tudo bem"
 
+    order = true
+
     from flask import request
     
     data = request.get_json()
@@ -110,7 +114,7 @@ def create_menu():
 
     if size <= 3:
 
-        last_body = common.made_quick_reply (list = list,channel = channel, text = text, comment = comment)
+        last_body = common.made_quick_reply (list = list,channel = channel, text = text, comment = comment, order = order)
 
     elif size <= 10 and size >3 :
 

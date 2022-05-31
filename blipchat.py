@@ -37,7 +37,7 @@ def made_menu (list, text):
 
 
 
-def made_quick_reply (list, text):
+def made_quick_reply (list, text, order):
 
     body = {}
     list_option = []
