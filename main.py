@@ -83,7 +83,7 @@ def create_menu():
 
     comment = "Por aqui está tudo bem"
 
-    order = true
+    
 
     from flask import request
     
@@ -110,7 +110,7 @@ def create_menu():
 
                 channel = "text"
 
-
+    order = True
 
     if size <= 3:
 
