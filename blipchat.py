@@ -41,6 +41,7 @@ def made_quick_reply (list, text, order):
 
     body = {}
     list_option = []
+    option = {}
 
     count = 0
 
@@ -56,10 +57,8 @@ def made_quick_reply (list, text, order):
 
             
 
-            option = {
+            option ['text'] =  title
                 
-                    "text": title
-                }
             list_option.append(option)
 
     body = {
