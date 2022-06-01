@@ -53,11 +53,14 @@ def made_quick_reply (list, text, order):
 
             if order == True:
 
-                option['order'] = count
+                option = {                            
+                            'order' : count,
+                            'text' : title
+                         }   
 
-            
-
-            option ['text'] =  title
+            else:
+                
+                option = { 'text' : title }
                 
             list_option.append(option)
             print(option)
